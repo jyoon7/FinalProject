@@ -15,18 +15,18 @@ def directorychooser():
     os.chdir(directory)
 
     for files in os.listdir(directory):
-        if files.endswith(".ogg"):
+        if files.endswith(".mp3"):
             listofsongs.append(files)
     
     print(listofsongs)
+    pygame.init()
     pygame.mixer.init()
     pygame.mixer.music.load(listofsongs[0])
     pygame.mixer.music.play()
-    pygame.mixer.music.stop()
 
 btn = Button(root, text="Select folder", command = directorychooser)
 
-btn.grid(column=1, row=0)
+btn.grid(column=3, row=1)
 
 
 root.mainloop()
