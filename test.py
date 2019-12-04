@@ -7,6 +7,7 @@ root = Tk()
 root.title("Music Player")
 root.minsize(300,300)
 
+
 listofsongs = []
 
 def directorychooser():
@@ -14,13 +15,14 @@ def directorychooser():
     os.chdir(directory)
 
     for files in os.listdir(directory):
-        if files.endswith(".mp3"):
+        if files.endswith(".ogg"):
             listofsongs.append(files)
     
     print(listofsongs)
     pygame.mixer.init()
     pygame.mixer.music.load(listofsongs[0])
     pygame.mixer.music.play()
+    pygame.mixer.music.stop()
 
 btn = Button(root, text="Select folder", command = directorychooser)
 
