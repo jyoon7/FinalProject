@@ -7,7 +7,8 @@ from mutagen.id3 import ID3
 
 # Variables
 listofsongs = []
-titles = []
+albums = []
+tags = [] # Tag elements: 0 = title / 1 = performer / 2 = composer
 index = 0
 
 # Create main window
@@ -39,6 +40,7 @@ player.config(menu=menubar)
 subMenu = Menu(menubar, tearoff=0)
 
 def opendir():
+    global directory
     directory = askdirectory()
     os.chdir(directory)
 
@@ -46,12 +48,13 @@ def opendir():
         if files.endswith(".mp3"):
             realdir = os.path.realpath(files)
             audio = ID3(realdir)
-            titles.append(audio['TIT2'].text[0])
+            tags.append(audio['TIT2'].text[0])
             listofsongs.append(files)
 
     pygame.mixer.music.load(listofsongs[0])
+
     
-    for x in titles:
+    for x in tags:
         listbox2.insert(0,x)
 
 menubar.add_cascade(label='File', menu=subMenu)
@@ -67,7 +70,7 @@ listbox2.pack(padx=1, pady=0, side=RIGHT)
 
 
 
-# Buttons
+# Media buttons
 def nextsong(event):
     global index
     index += 1
@@ -107,6 +110,21 @@ prev.bind("<Button-1>",prevsong)
 play.bind("<Button-1>",playsong)
 stop.bind("<Button-1>",stopsong)
 
+
+# Other buttons
+def booklet(event):
+    os.startfile("Booklet.pdf")
+
+openbook = Button(frame2, text = 'Booklet')
+openbook.pack(side = LEFT)
+openbook.bind("<Button-1>",booklet)
+
+def score(event):
+    os.startfile("score.pdf")
+
+openscore = Button(frame2, text = 'Score')
+openscore.pack(side = LEFT)
+openscore.bind("<Button-1>",score)
 
 
 player.mainloop()
