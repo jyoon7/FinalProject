@@ -47,3 +47,5 @@ In the opendir() function, the app asks the user to choose a directory (using th
 The tags that are appended are:
     Song title: using "TIT2"
     Composer: using "TPE1"
+    
+Volume uses pygame's setvolume
