@@ -42,4 +42,8 @@ The play and pause function works using the global Paused variable. Pausing decl
 
 The tags of audio files are accessed through the mutagen library.
 
-In the opendir() function, the app asks the user to choose a directory (using the "os" library). To pass the directory name into the ID3 function, m
+In the opendir() function, the app asks the user to choose a directory (using the "os" library). To pass the directory name into the ID3 function, it goes through the os.path.realpath() function to make the name compatible with ID3 function. 
+
+The tags that are appended are:
+    Song title: using "TIT2"
+    Composer: using "TPE1"

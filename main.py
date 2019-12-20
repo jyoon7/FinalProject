@@ -69,7 +69,7 @@ def opendir(): # Choose folder with songs
     for x in composer:
         listbox1.insert(0,x)
 
-
+#Create the menu commands
 menubar.add_cascade(label='File', menu=subMenu)
 subMenu.add_command(label="Open", command=opendir)
 subMenu.add_command(label="Exit", command=player.destroy) 
@@ -105,7 +105,7 @@ def prevsong(event):
 
 def playsong(event):
     global paused
-    if paused:
+    if paused: # detects if the song was paused. If so, it resumes playback
         pygame.mixer.music.unpause()
         paused = FALSE
 
@@ -117,7 +117,7 @@ def playsong(event):
 
 def pausesong(event):
     global paused
-    pygame.mixer.music.pause()
+    pygame.mixer.music.pause() # indicates to the player that the song was stopped
     paused = TRUE
 
 def stopsong(event):
