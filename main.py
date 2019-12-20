@@ -54,11 +54,11 @@ def opendir(): # Choose folder with songs
 
     for files in os.listdir(directory):
         if files.endswith(".mp3"):
-            realdir = os.path.realpath(files)
-            audio = ID3(realdir)
+            realdir = os.path.realpath(files) # Used to get the compatible directory name for the ID3 function
+            tag = ID3(realdir)
             # Append ID3 tag information into the respective lists
-            title.append(audio['TIT2'].text[0]) 
-            composer.append(audio['TPE1'].text[0])
+            title.append(tag['TIT2'].text[0]) 
+            composer.append(tag['TPE1'].text[0])
             songs.append(files)
 
     pygame.mixer.music.load(songs[0])

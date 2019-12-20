@@ -37,3 +37,9 @@ Using the .bind function, all of the buttons on the bottom are connected with th
 The updating label uses StringVar(), and is set to the current song title based on the current index.
 
 The play and pause function works using the global Paused variable. Pausing declares "paused" to be true. If the play button detects that the song has been paused, it will resume the song.
+
+# Tag information
+
+The tags of audio files are accessed through the mutagen library.
+
+In the opendir() function, the app asks the user to choose a directory (using the "os" library). To pass the directory name into the ID3 function, m
